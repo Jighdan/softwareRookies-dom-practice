@@ -36,3 +36,21 @@ Editable: if the cell will get into the editable mode when double clicking. The 
 ### Columns and Rows should be orderable
 
 When you click on a column header and start to drag it, that column should be able to move from one position to another. For example, if we have columns Id, Name, Age, and I want to move Age to the second position, I should be able to hold it and drag it to the second position so the columns should now be: Id, Age, Name.
+
+When pressing Ctrl + left click on a row, this row should now be draggable and can be moved to another position.
+
+### Table content should be saved in localStorage
+
+Every time a change is made on the table (a new row, a new column, cell edit, etc.) it should be saved in localStorage. The table should a JavaScript object representation.
+
+When the page is reloaded, the first thing that it should do is to try to get the table JavaScript object representation from the localStorage and recreate the table from there. If the table is not in the local storage, then simply create an empty `<table></table>` and get ready for New Row and New Column events.
+
+### Rows should be selectable
+
+The first column should be a checkbox to select that specific record or multiple records or all the records. This checkbox column should be created by default for all rows.
+
+Delete button should be disabled by default. Only when at least on row is selected, the Delete button should be active. When clicking on this Delete button, the selected row(s) should be deleted.
+
+### Table and buttons should look nice
+
+Use only HTML, CSS and JavaScript. No library is allowed.

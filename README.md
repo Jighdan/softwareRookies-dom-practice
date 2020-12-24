@@ -1,6 +1,6 @@
 # DOM Practice
 
-![](./TableExample.jpeg)
+![](https://github.com/jeremythen/DOM_Table_Test/blob/main/table.jpg)
 
 ## Requirements
 

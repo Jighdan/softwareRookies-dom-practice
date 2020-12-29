@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  padding: calc(1vh + 1.5rem) calc(1vw + 1.5rem);
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+html, body {
+  height: 100%;
+}
+
+.base {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.75rem;
+}
+
+.header {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+table, th, td {
+  border: 1px solid #696969;
+  border-collapse: collapse;
+}
+
+table {
+  min-width: 100%;
+}
+
+th, td {
+  padding: 6.5px 13px;
+}
+
+th {
+  text-align: left;
+}
+
+.table-container {
+  place-self: center stretch;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+}
+
+.button {
+  padding: 10px 16px;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0 57px 80px rgba(0, 0, 0, 0);
+}
+
+.button-green {
+  background-color: #50a944;
+}
+
+.button-blue {
+  background-color: #32a2b9;
+}
+
+.button-disabled {
+  box-shadow: none;
+  background-color: #c0c0c0;
+  color: #696969;
+}

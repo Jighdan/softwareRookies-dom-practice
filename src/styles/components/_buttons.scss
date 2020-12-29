@@ -1,0 +1,26 @@
+button {
+	border: none;
+	border-radius: 0;
+}
+
+.button {
+	padding: 10px 16px;
+	color: #fff;
+	border-radius: 5px;
+	font-weight: bold;
+	box-shadow: 0 57px 80px rgba(0, 0, 0, 0);
+}
+
+.button-green {
+	background-color: $color-green;
+}
+
+.button-blue {
+	background-color: $color-blue;
+}
+
+.button-disabled {
+	box-shadow: none;
+	background-color: $color-silver;
+	color: $color-gray;
+}

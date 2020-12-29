@@ -4,26 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Software Rookies - DOM Practice</title>
-	<link rel="stylesheet" href="../src/style.css">
+	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
-	<main class="main">
-		<header class="header">
-			<section>
+	<article class="base">
+
+		<main class="main">
+			<section class="header">
 				<button class="button button-green" type="button" id="buttonNewRow">New Row</button>
 				<button class="button button-blue" type="button" id="buttonNewColumn">New Column</button>
 			</section>
 
-			<button class="button button-red" type="button" id="buttonDelete">Delete</button>
-		</header>
+			<table class="table-container" id="tableContainer"></table>
+		</main>
 
-		<table class="table-container" id="tableContainer"></table>
-
-		<footer>
+		<footer class="footer">
 			<h3>Pagination ...</h3>
 		</footer>
-	</main>
+	</article>
 
-	<script src="../src/scripts/index.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+	<script type="module" src="./script.js"></script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+table, th, td {
+	border: 1px solid $color-gray;
+	border-collapse: collapse;
+}
+
+table {
+	min-width: 100%;
+}
+
+th, td {
+	padding: 6.5px 13px;
+}
+
+th {
+	text-align: left;
+}
+
+.table-container {
+	place-self: center stretch;
+}

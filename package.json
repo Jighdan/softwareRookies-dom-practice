@@ -1,0 +1,22 @@
+{
+  "name": "softwarerookies-dom-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Jighdan/softwareRookies-dom-test.git",
+  "author": "Reinny <reynsth@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "yarn webpack:build; sass:build",
+    "webpack:build": "webpack",
+    "sass:build": "dart-sass ./src/styles/main.scss ./dist/style.css --no-source-map",
+    "sass:watch": "dart-sass ./src/styles/main.scss ./dist/style.css --watch --no-source-map"
+  },
+  "devDependencies": {
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "dart-sass": "^1.25.0"
+  }
+}

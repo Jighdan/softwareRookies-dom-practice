@@ -1,17 +1,19 @@
-import { addRow, addColumn } from "./dataManager";
-
-const buttonNewRow = document.getElementById("buttonNewRow");
-const buttonNewColumn = document.getElementById("buttonNewColumn");
+import element from "./domElements";
+import DOM from "./modules/generators/index";
+import table from "./tableData";
 
 const addRowEvent = () => {
-	console.log("Row Added");
-};// Adding available headers
+	console.log(table)
+	table.addRow();
+	DOM.table.refreshTable(element.tableContainer, table.data);
+	console.log(table)
+};
 
 const addColumnEvent = () =>{
 	console.log("Column added");
 };
 
-export const initializeButtons = () => {
-	buttonNewRow.addEventListener("click", addRowEvent);
-	buttonNewColumn.addEventListener("click", addColumnEvent);
+export const initializeEvents = () => {
+	element.button.newRow.addEventListener("click", addRowEvent);
+	element.button.newColumn.addEventListener("click", addColumnEvent);
 };

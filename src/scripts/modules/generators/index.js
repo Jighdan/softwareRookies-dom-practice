@@ -1,3 +1,6 @@
+import { initializeTable, refreshTable } from "./table/index";
+import { toggleButtonDisabled } from "./button/index";
+
 export const generateElementContent = (elementTag, elementContent) => {
 	const element = document.createElement(elementTag);
 	if (elementContent) {
@@ -6,5 +9,17 @@ export const generateElementContent = (elementTag, elementContent) => {
 			: element.innerHTML = elementContent;
 	}
 	
-	return element
+	return element;
 };
+
+const DOM = {
+	table: {
+		initializeTable,
+		refreshTable,
+	},
+	button: {
+		toggleButtonDisabled
+	}
+};
+
+export default DOM;

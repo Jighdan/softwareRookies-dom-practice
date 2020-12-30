@@ -34,7 +34,7 @@ export const initializeTable = (tableContainer, tableData) => {
 };
 
 export const refreshTable = (tableContainer, tableData) => {
-	const tableBody = tableContainer.getElementByTagName("tbody")[0];
+	const tableBody = tableContainer.getElementsByTagName("tbody")[0];
 	tableContainer.deleteTHead();
 	tableBody.remove();
 	initializeTable(tableContainer, tableData);

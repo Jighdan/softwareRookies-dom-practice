@@ -1,5 +1,7 @@
-import { initializeTable } from "./modules/generators/table/index";
-const tableContainer = document.getElementById("tableContainer");
+import table from "./tableData";
+import element from "./domElements";
+import DOM from "./modules/generators/index";
+import { initializeEvents } from "./events";
 
 const tableData = {
 	headers: {
@@ -33,4 +35,5 @@ const tableData = {
 	]
 };
 
-initializeTable(tableContainer, tableData);
+DOM.table.initializeTable(element.tableContainer, table.data);
+initializeEvents();

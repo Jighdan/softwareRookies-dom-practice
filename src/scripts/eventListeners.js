@@ -1,16 +1,16 @@
 import element from "./domElements";
-import DOM from "./modules/generators/index";
+import DOM from "./modules/domManagers/index";
 import table from "./tableData";
 
 const addRowEvent = () => {
-	console.log(table)
 	table.addRow();
-	DOM.table.refreshTable(element.tableContainer, table.data);
-	console.log(table)
+	DOM.table.generate(element.tableContainer, table.data);
 };
 
-const addColumnEvent = () =>{
-	console.log("Column added");
+const addColumnEvent = (columnName, columnType) => {
+	table.addColumn(columnName, columnType);
+	console.log(table)
+	DOM.table.generate(element.tableContainer, table.data);
 };
 
 export const initializeEvents = () => {

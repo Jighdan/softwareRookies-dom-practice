@@ -2,7 +2,7 @@ const setCellDataDefaultState = (cellType) => (cellType !== "number" ? "" : 0);
 
 /*
 	Had to switch from arrow functions to regular functions because it seems
-	that I don't understand `this` well. Added to future refactors.
+	that I don't understand `this` that well. Added to future refactors.
 	
 	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 */
@@ -41,13 +41,13 @@ const table = new Object({
 		this.data.rows.push(rowTemplate);
 	},
 
-	addColumn: function(payload) {
+	addColumn: function(columnName, columnType) {
 		// Payload = { name: String, type: String }
 		// Registers the new column to `data.headers`
-		this.data.headers[payload.name] = payload.type;
+		this.data.headers[columnName] = columnType;
 
 		// Iterates over all of the available rows and adds the new column
-		this.data.rows.forEach(row => row.cells[payload.name] = setCellDataDefaultState(payload.type));
+		this.data.rows.forEach(row => row.cells[columnName] = setCellDataDefaultState(columnType));
 	}
 });
 

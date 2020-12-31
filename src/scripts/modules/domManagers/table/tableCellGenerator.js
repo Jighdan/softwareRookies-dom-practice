@@ -11,18 +11,6 @@ const convertToAnchor = (type, value) => {
 	return anchor;
 };
 
-export const generateDataCell = (content) => {
-	const dataCell = document.createElement("td");
-	dataCell.appendChild(content);
-	return dataCell;
-};
-
-export const generateHeaderDataCell = (content) => {
-	const dataCell = document.createElement("th");
-	dataCell.appendChild(content);
-	return dataCell;
-};
-
 export const generateCell = (cellType, cellValue) => {
 	switch (cellType) {
 		case "email":

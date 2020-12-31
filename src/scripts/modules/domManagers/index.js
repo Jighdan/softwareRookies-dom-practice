@@ -1,4 +1,4 @@
-import { initializeTable, refreshTable } from "./table/index";
+import tableDom from "./table/index";
 import { toggleButtonDisabled } from "./button/index";
 
 export const generateElementContent = (elementTag, elementContent) => {
@@ -13,12 +13,9 @@ export const generateElementContent = (elementTag, elementContent) => {
 };
 
 const DOM = {
-	table: {
-		initializeTable,
-		refreshTable,
-	},
+	table: tableDom,
 	button: {
-		toggleButtonDisabled
+		toggleDisabled: toggleButtonDisabled
 	}
 };
 

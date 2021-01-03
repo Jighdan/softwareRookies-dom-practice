@@ -3,6 +3,15 @@ import { capitalizeString } from "../../textFormat";
 import { generateRow } from "./tableRowGenerator";
 import { generateRowSelector } from "./tableRowAddons";
 
+/* 
+	Cases: 
+		- How do we remove an specific row?
+			"Add a `data` element to each row of the table"
+
+		- Pass required data once to the table and then to their respective functions?
+			"An OOP approach, define a `tableDom` class and then pass the required parameters"
+*/
+
 const tableDom = {
 	_generateHeader: function (tableContainer, tableData) {
 		const tableHead = tableContainer.createTHead();
@@ -19,6 +28,9 @@ const tableDom = {
 
 		const tableHeadRowContent = [tableHeadSelector, ...tableHeadCells, generateElementContent("th", false)];
 		tableHeadRowContent.forEach(tableHeadRowItem => tableHeadRow.appendChild(tableHeadRowItem));
+
+		// Add a `header` id to the row for the selector event
+		tableHeadRow.setAttribute("data-row-id", "header");
 	},
 
 	_generateBody: function (tableContainer, tableData) {

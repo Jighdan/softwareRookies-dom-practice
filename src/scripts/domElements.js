@@ -10,6 +10,10 @@ const element = {
 		newRow: document.getElementById("buttonNewRow"),
 		newColumn: document.getElementById("buttonNewColumn"),
 	},
+	modal: {
+		container: document.getElementById("modal"),
+		close: document.getElementById("modalClose")
+	},
 	form: document.getElementById("headerForm")
 };
 

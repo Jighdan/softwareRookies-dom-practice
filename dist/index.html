@@ -8,6 +8,28 @@
 </head>
 <body>
 	<article class="base">
+		<aside class="modal" role="dialog">
+			<section class="modal-body">
+				<form class="form" id="headerForm">
+					<h1>New Column</h1>
+					<section class="form-section">
+						<label class="form-label" for="headerName">Column Name</label>
+						<input class="form-input" type="text" required name="headerName" />
+					</section>
+					<section class="form-section">
+						<label class="form-label" for="headerType">Column Type</label>
+						<select class="form-input" name="headerType" id="headerType">
+							<option value="text" selected>Text</option>
+							<option value="number">Number</option>
+							<option value="url">URL</option>
+							<option value="email">E-Mail</option>
+						</select>
+					</section>
+
+					<button class="button" type="submit">Create New Column</button>
+				</form>
+			</section>
+		</aside>
 
 		<main class="main">
 			<section class="header">

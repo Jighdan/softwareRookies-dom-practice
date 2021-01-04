@@ -2,19 +2,26 @@ import element from "./domElements";
 import DOM from "./modules/domManagers/index";
 import table from "./tableData";
 
-const addRowEvent = () => {
+const buttonAddRow = () => {
 	table.addRow();
 	DOM.table.generate(element.table.container, table.data);
 };
 
-const addColumnEvent = (columnName, columnType) => {
+const buttonAddColumn = (columnName, columnType) => {
 	table.addColumn(columnName, columnType);
-	console.log(table)
+	DOM.table.generate(element.table.container, table.data);
+};
+
+const newColumnForm = (event) => {
+	event.preventDefault();
+	const { headerName, headerType } = element.form.elements;
+	table.addColumn(headerName.value, headerType.value);
 	DOM.table.generate(element.table.container, table.data);
 };
 
 export const initializeEvents = () => {
 	// Buttons
-	element.button.newRow.addEventListener("click", addRowEvent);
-	element.button.newColumn.addEventListener("click", addColumnEvent);
+	element.button.newRow.addEventListener("click", buttonAddRow);
+	element.button.newColumn.addEventListener("click", buttonAddColumn);
+	element.form.addEventListener("submit", newColumnForm);
 };

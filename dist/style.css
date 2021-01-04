@@ -84,3 +84,23 @@ button {
   background-color: #c0c0c0;
   color: #696969;
 }
+
+.form {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.form-section {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 0.1rem;
+}
+
+.form-input {
+  padding: 8px 16px;
+}

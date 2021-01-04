@@ -9,7 +9,8 @@ const element = {
 	button: {
 		newRow: document.getElementById("buttonNewRow"),
 		newColumn: document.getElementById("buttonNewColumn"),
-	}
+	},
+	form: document.getElementById("headerForm")
 };
 
 export default element;

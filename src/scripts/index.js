@@ -1,7 +1,7 @@
 import table from "./tableData";
 import element from "./domElements";
 import DOM from "./modules/domManagers/index";
-import { initializeEvents } from "./eventListeners";
+import { initializeEvents } from "./globalEvents";
 
-DOM.table.generate(element.tableContainer, table.data);
+DOM.table.generate(element.table.container, table.data);
 initializeEvents();

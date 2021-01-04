@@ -1,9 +1,8 @@
 import { generateElementContent } from "../index";
 
 const generateRowSelectorEvent = (rowSelector) => {
-	// Assumes that the checkbox path will be `... tr > td > input`
-	// This event tries to get the table row's id
 	rowSelector.addEventListener("click", (event) => {
+		// Assumes that the checkbox path will be `... tr > td > input`
 		const rowParent = event.path[2];
 		const { rowId } = rowParent.dataset;
 		console.log(rowId)

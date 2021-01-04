@@ -12,11 +12,8 @@ export const generateElementContent = (elementTag, elementContent) => {
 	return element;
 };
 
-const DOM = {
-	table: tableDom,
-	button: {
-		toggleDisabled: toggleButtonDisabled
-	}
+const domGenerate = {
+	table: tableDom
 };
 
-export default DOM;
+export default domGenerate;

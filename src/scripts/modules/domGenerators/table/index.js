@@ -17,10 +17,12 @@ const tableDom = {
 		const tableHead = tableContainer.createTHead();
 		const tableHeadRow = tableHead.insertRow();
 		const tableHeadSelector = generateElementContent("th", generateRowSelector());
+		// Add a `header` id to the row for the selector event
+		tableHeadRow.setAttribute("data-row-id", "header");
 
-		const tableHeadCells = Object.keys(tableData.headers).map(header => {
+		const tableHeadCells = Object.keys(tableData.columns).map(columnName => {
 			// Generate table's head content
-			const tableHeadCellContent = generateElementContent("h3", capitalizeString(header));
+			const tableHeadCellContent = generateElementContent("h3", capitalizeString(columnName));
 			// Add content to the table header cell
 			const tableHeadCell = generateElementContent("th", tableHeadCellContent);
 			return tableHeadCell
@@ -28,20 +30,17 @@ const tableDom = {
 
 		const tableHeadRowContent = [tableHeadSelector, ...tableHeadCells, generateElementContent("th", false)];
 		tableHeadRowContent.forEach(tableHeadRowItem => tableHeadRow.appendChild(tableHeadRowItem));
-
-		// Add a `header` id to the row for the selector event
-		tableHeadRow.setAttribute("data-row-id", "header");
 	},
 
 	_generateBody: function (tableContainer, tableData) {
 		const tableBody = tableContainer.createTBody();
 		tableData.rows.forEach(row => {
-			const tableBodyRow = generateRow(row, tableData.headers);
+			const tableBodyRow = generateRow(row, tableData.columns);
 			tableBody.appendChild(tableBodyRow);
 		});
 	},
 
-	generate: function (tableContainer, tableData) {
+	initialize: function (tableContainer, tableData) {
 		// Check if there's content inside `tableContainer`
 		const tableBody = tableContainer.getElementsByTagName("tbody");
 		if (tableBody.length) {

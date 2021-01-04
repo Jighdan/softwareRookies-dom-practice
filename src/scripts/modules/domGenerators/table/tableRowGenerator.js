@@ -2,13 +2,13 @@ import { generateElementContent } from "../index";
 import { generateRowSelector, generateRowSettings } from "./tableRowAddons";
 import { generateCell } from "./tableCellGenerator";
 
-export const generateRow = (row, headers) => {
+export const generateRow = (row, columns) => {
 	const rowSelector = generateElementContent("td", generateRowSelector(row.id));
 	const rowSettings = generateElementContent("td", generateRowSettings());
 
 	const cells = Object.keys(row.cells).map(cellHeader => {
 		// Converting the cell content to it's HTML equivalent
-		const headerType = headers[cellHeader];
+		const headerType = columns[cellHeader];
 		const cellValue = row.cells[cellHeader];
 		const cell = generateCell(headerType, cellValue);
 

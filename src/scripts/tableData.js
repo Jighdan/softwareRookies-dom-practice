@@ -9,7 +9,7 @@ const setCellDataDefaultState = (cellType) => (cellType !== "number" ? "" : 0);
 
 const table = new Object({
 	data: {
-		headers: {
+		columns: {
 			// headerName: headerType
 		},
 		rows: [
@@ -31,9 +31,9 @@ const table = new Object({
 		};
 
 		// Check if there are headers in the table and adds the to the row
-		if (this.data.headers) {
-			Object.keys(this.data.headers).forEach(header => {
-				rowTemplate.cells[header] = setCellDataDefaultState(this.data.headers[header])
+		if (this.data.columns) {
+			Object.keys(this.data.columns).forEach(columnName => {
+				rowTemplate.cells[columnName] = setCellDataDefaultState(this.data.columns[columnName])
 			})
 		};
 
@@ -42,10 +42,8 @@ const table = new Object({
 	},
 
 	addColumn: function(columnName, columnType) {
-		// Payload = { name: String, type: String }
 		// Registers the new column to `data.headers`
-		this.data.headers[columnName] = columnType;
-
+		this.data.columns[columnName] = columnType;
 		// Iterates over all of the available rows and adds the new column
 		this.data.rows.forEach(row => row.cells[columnName] = setCellDataDefaultState(columnType));
 	}

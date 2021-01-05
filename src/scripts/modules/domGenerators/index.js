@@ -1,13 +1,10 @@
 import tableDom from "./table/index";
-import { toggleButtonDisabled } from "./button/index";
 
-export const generateElementContent = (elementTag, elementContent) => {
+export const generateElement = (elementTag, ...elementChildren) => {
 	const element = document.createElement(elementTag);
-	if (elementContent) {
-		typeof elementContent === "object"
-			? element.appendChild(elementContent)
-			: element.innerHTML = elementContent;
-	}
+	if (elementChildren) {
+		elementChildren.forEach(children => element.appendChild(children))
+	};
 	
 	return element;
 };

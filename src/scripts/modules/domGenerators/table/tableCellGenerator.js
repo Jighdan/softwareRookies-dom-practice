@@ -1,7 +1,7 @@
-import { generateElementContent } from "../index";
+import { generateElement } from "../index";
 
 const convertToAnchor = (type, value) => {
-	const anchor = generateElementContent("a", value);
+	const anchor = generateElement("a", document.createTextNode(value));
 	anchor.rel = "noreferrer noopener";
 	anchor.target = "_blank";
 	type === "url"
@@ -12,15 +12,16 @@ const convertToAnchor = (type, value) => {
 };
 
 export const generateCell = (cellType, cellValue) => {
+	const value = document.createTextNode(cellValue);
 	switch (cellType) {
 		case "email":
 			return convertToAnchor("email", cellValue);
 		case "url":
 			return convertToAnchor("url", cellValue);
 		case "number":
-			return generateElementContent("span", cellValue);
+			return generateElement("span", value);
 		default:
 			// Generate a paragraph element
-			return generateElementContent("p", cellValue);
+			return generateElement("p", value);
 	}
 };

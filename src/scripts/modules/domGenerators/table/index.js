@@ -1,4 +1,4 @@
-import { generateElementContent } from "../index";
+import { generateElement } from "../index";
 import { capitalizeString } from "../../textFormat";
 import { generateRow } from "./tableRowGenerator";
 import { generateRowSelector } from "./tableRowAddons";
@@ -14,30 +14,29 @@ import { generateRowSelector } from "./tableRowAddons";
 
 const tableDom = {
 	_generateHeader: function (tableContainer, tableData) {
-		const tableHead = tableContainer.createTHead();
-		const tableHeadRow = tableHead.insertRow();
-		const tableHeadSelector = generateElementContent("th", generateRowSelector());
-		// Add a `header` id to the row for the selector event
-		tableHeadRow.setAttribute("data-row-id", "header");
+		const tableHeadSelector = generateElement("th", generateRowSelector());
+		const tableHeadEmptyCell = generateElement("th");
 
 		const tableHeadCells = Object.keys(tableData.columns).map(columnName => {
 			// Generate table's head content
-			const tableHeadCellContent = generateElementContent("h3", capitalizeString(columnName));
+			const columnText = capitalizeString(columnName);
+			const tableHeadCellContent = generateElement("h3", document.createTextNode(columnText));
 			// Add content to the table header cell
-			const tableHeadCell = generateElementContent("th", tableHeadCellContent);
+			const tableHeadCell = generateElement("th", tableHeadCellContent);
 			return tableHeadCell
 		});
 
-		const tableHeadRowContent = [tableHeadSelector, ...tableHeadCells, generateElementContent("th", false)];
-		tableHeadRowContent.forEach(tableHeadRowItem => tableHeadRow.appendChild(tableHeadRowItem));
+		const tableHeadRow = generateElement("tr", tableHeadSelector, ...tableHeadCells, tableHeadEmptyCell);
+		// Add a `header` id to the row for the selector event
+		tableHeadRow.setAttribute("data-row-id", "header");
+		const tableHead = generateElement("thead", tableHeadRow);
+		tableContainer.appendChild(tableHead);
 	},
 
 	_generateBody: function (tableContainer, tableData) {
-		const tableBody = tableContainer.createTBody();
-		tableData.rows.forEach(row => {
-			const tableBodyRow = generateRow(row, tableData.columns);
-			tableBody.appendChild(tableBodyRow);
-		});
+		const tableBodyRows = tableData.rows.map(row => generateRow(row, tableData.columns));
+		const tableBody = generateElement("tbody", ...tableBodyRows);
+		tableContainer.appendChild(tableBody);
 	},
 
 	initialize: function (tableContainer, tableData) {

@@ -21,6 +21,5 @@ export default {
 		state.table.columns[columnName] = columnType;
 		// Iterates over all of the available rows and adds the new column
 		state.table.rows.forEach(row => row.cells[columnName] = columnType);
-		console.log(state.table);
 	}
 };

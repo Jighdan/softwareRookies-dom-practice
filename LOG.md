@@ -2,10 +2,13 @@
 
 Through components handle all the events.
 
-# Cases
+# To-Do
 
-## Table is empty
-1. Generate a table element and wait for input.
+- [ ] Remove unused code
+- [ ] Modal closes when form is submitted
+- [ ] When table cells are clicked, transform to input
+- [ ] Style table
 
-## Table has data
-1. Generate table based on data
+- [ ] If table is empty show a message
+- [ ] State consistency
+- [ ] ButtonNewColumn is disabled if table holds no rows

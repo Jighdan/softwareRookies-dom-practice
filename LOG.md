@@ -4,7 +4,8 @@ Through components handle all the events.
 
 # To-Do
 
-- [ ] Remove unused code
+- [x] Remove unused code
+- [ ] Improve HTML code (Form autofocus)
 - [ ] Modal closes when form is submitted
 - [ ] When table cells are clicked, transform to input
 - [ ] Style table

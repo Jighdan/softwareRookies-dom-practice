@@ -17,7 +17,7 @@ export default class Form extends ComponentBase {
 		event.preventDefault();
 
 		// Scoping messed me up badly for straight 30 minutes
-		const formElements = this.elements;
+		const formElements = this.element.elements;
 		const { columnName, columnType } = formElements;
 
 		// Adds the new column to the table
@@ -27,11 +27,14 @@ export default class Form extends ComponentBase {
 		});
 
 		// Resets the form input values
-		this.elements.columnName.value = "";
+		this.element.elements.columnName.value = "";
+
+		// Closes the modal
+		this.hideModal();
 	};
 
 	addEvents() {
-		this.element.addEventListener("submit", this.handleSubmit);
+		this.element.addEventListener("submit", (event) => this.handleSubmit(event));
 	};
 
 	render() {

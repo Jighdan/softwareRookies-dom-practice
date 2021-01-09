@@ -20,6 +20,6 @@ export default {
 		// Registers the new column to `data.headers`
 		state.table.columns[columnName] = columnType;
 		// Iterates over all of the available rows and adds the new column
-		state.table.rows.forEach(row => row.cells[columnName] = columnType);
+		state.table.rows.forEach(row => row.cells[columnName] = "");
 	}
 };

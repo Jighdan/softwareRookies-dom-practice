@@ -37,21 +37,38 @@ html, body {
   justify-content: flex-end;
 }
 
-table, th, td {
-  border: 1px solid #696969;
+table {
+  border: 1px solid #c0c0c0;
   border-collapse: collapse;
 }
 
+thead {
+  border-bottom: 1px solid #c0c0c0;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
 table {
-  min-width: 100%;
+  max-width: 100%;
+}
+
+tr {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 th, td {
   padding: 6.5px 13px;
 }
 
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
 th {
-  text-align: left;
+  text-align: center;
 }
 
 .table-container {

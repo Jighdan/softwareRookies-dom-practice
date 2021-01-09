@@ -1,28 +1,41 @@
-const generateAnchorElement = (anchorType, anchorValue) => {
-	const element = document.createElement("a").appendChild(document.createTextNode(anchorValue));
-	element.setAttribute("rel", "noreferrer noopener");
-	element.setAttribute("target", "_blank");
-	anchorType === "url"
-		? element.setAttribute("href", anchorValue)
-		: element.setAttribute("href", `mailto:${anchorValue}`);
+import ComponentBase from "../ComponentBase";
+import store from "../../store/index";
 
-	return element;
-};
-
-const tableRowCell = (cellType, cellValue) => {
-	const element = document.createElement("td");
-	let elementContent;
-
-	switch (cellType) {
-		case ["email", "url"].includes(cellType):
-			elementContent = generateAnchorElement(cellType, cellValue);
-		default:
-			elementContent = document.createElement("p");
-			elementContent.innerText = cellValue;
+export default class TableRowCell extends ComponentBase {
+	constructor (rowId, cellType, cellValue) {
+		super({ store, element: document.createElement("td") });
+		this.elementContent = document.createElement("p");
+		this.rowId = rowId;
+		this.cellType = cellType;
+		this.cellValue = cellValue;
+		this.hasRenderedOnce = false;
 	};
 
-	element.appendChild(elementContent);
-	return element;
-};
+	promptNewCellValue() {
+		// Using a default value in case there's no input
+		let newCellValue = prompt("Input new cell value", this.cellValue) || this.cellValue;
 
-export default tableRowCell;
+		// No need to update the store if the value will be the same
+		if (newCellValue !== this.cellValue) {
+			const newCellState = { cellName: this.cellType, cellValue: newCellValue };
+			store.commit("updateRowCell", { rowId: this.rowId, newCellState });
+		};
+	};
+
+	addEvents() {
+		this.element.addEventListener("dblclick", () => this.promptNewCellValue());
+	};
+
+	render() {
+		if (!this.hasRenderedOnce) {
+			this.addEvents();
+		};
+		
+		// Adds the content to the element
+		this.elementContent.innerText = this.cellValue;
+		this.element.appendChild(this.elementContent);
+
+		this.hasRenderedOnce = true;
+		return this.element;
+	}
+};

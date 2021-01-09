@@ -21,5 +21,13 @@ export default {
 		state.table.columns[columnName] = columnType;
 		// Iterates over all of the available rows and adds the new column
 		state.table.rows.forEach(row => row.cells[columnName] = "");
+	},
+
+	updateRowCell (state, { rowId, newCellState }) {
+		const { cellName, cellValue } = newCellState;
+		// Find a row with an id that matches the passed rowId parameter
+		// And update the cell
+		state.table.rows.find(row => row.id === rowId)
+			.cells[cellName] = cellValue;
 	}
 };

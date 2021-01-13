@@ -14,7 +14,7 @@ const tableRow = (row, tableColumns) => {
 	const elementCells = Object.keys(row.cells).map(cellName => {
 		const cellType = tableColumns[cellName];
 		const cellValue = row.cells[cellName];
-		const cellNode = new TableRowCell(row.id, cellType, cellValue).render();
+		const cellNode = new TableRowCell(row.id, cellName, cellType, cellValue).render();
 		return cellNode;
 	});
 

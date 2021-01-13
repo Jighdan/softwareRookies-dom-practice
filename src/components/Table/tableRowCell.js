@@ -2,10 +2,11 @@ import ComponentBase from "../ComponentBase";
 import store from "../../store/index";
 
 export default class TableRowCell extends ComponentBase {
-	constructor (rowId, cellType, cellValue) {
+	constructor (rowId, cellName, cellType, cellValue) {
 		super({ store, element: document.createElement("td") });
 		this.elementContent = document.createElement("p");
 		this.rowId = rowId;
+		this.cellName = cellName;
 		this.cellType = cellType;
 		this.cellValue = cellValue;
 		this.hasRenderedOnce = false;
@@ -15,9 +16,9 @@ export default class TableRowCell extends ComponentBase {
 		// Using a default value in case there's no input
 		let newCellValue = prompt("Input new cell value", this.cellValue) || this.cellValue;
 
-		// No need to update the store if the value will be the same
+		// No need to update the store state if the value will be the same
 		if (newCellValue !== this.cellValue) {
-			const newCellState = { cellName: this.cellType, cellValue: newCellValue };
+			const newCellState = { cellName: this.cellName, cellValue: newCellValue };
 			store.commit("updateRowCell", { rowId: this.rowId, newCellState });
 		};
 	};

@@ -7,6 +7,7 @@ export default class Store {
 		this.state = state;
 		this.mutations = mutations;
 		this.events = new EventManager();
+		this.localStorageKey = "softwareRookies-dom-practice-state";
 	};
 
 	commit (mutationName, payload) {
@@ -19,5 +20,13 @@ export default class Store {
 		this.mutations[mutationName](this.state, payload);
 		// Notify the stateChange for the observers
 		this.events.notify("stateChange", this.state);
+		// Save the current state in the local storage
+		localStorage.setItem(this.localStorageKey, JSON.stringify(this.state));
+	};
+
+	fetchSavedState() {
+		const localStorageState = localStorage.getItem(this.localStorageKey);
+		console.log(localStorageState)
+		if (localStorageState) { this.state = JSON.parse(localStorageState) };
 	};
 };

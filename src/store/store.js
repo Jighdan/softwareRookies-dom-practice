@@ -26,7 +26,6 @@ export default class Store {
 
 	fetchSavedState() {
 		const localStorageState = localStorage.getItem(this.localStorageKey);
-		console.log(localStorageState)
 		if (localStorageState) { this.state = JSON.parse(localStorageState) };
 	};
 };

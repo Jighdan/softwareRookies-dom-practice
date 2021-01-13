@@ -1,4 +1,8 @@
 export default {
+	setTableRowsData (state, newRowsData) {
+		state.table.rows = newRowsData;
+	},
+
 	addRow (state) {
 		const rowTemplate = {
 			id: uuidv4(),
@@ -29,5 +33,22 @@ export default {
 		// And update the cell
 		state.table.rows.find(row => row.id === rowId)
 			.cells[cellName] = cellValue;
+	},
+
+	sortRows (state, { columnName, columnType }) {
+		// NOTE -> Empty cells will always be < than any letter or number (except zero)
+		if (columnType === "number") {
+			state.table.rows.sort((a, b) => a.cells[columnName] - b.cells[columnName]);
+		} else {
+			state.table.rows.sort((a, b) => {
+				let firstValue = a.cells[columnName].toUpperCase();
+				let secondValue = b.cells[columnName].toUpperCase();
+	
+				if (firstValue < secondValue) { return -1 };
+				if (firstValue > secondValue) { return 1 };
+				// If they happen to be equal
+				return 0;
+			});
+		};
 	}
 };

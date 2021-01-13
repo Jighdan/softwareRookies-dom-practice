@@ -1,8 +1,8 @@
 import ComponentBase from "../ComponentBase";
 import store from "../../store/index";
+import TableHeaderCell from "./tableHeaderCell";
 import tableRow from "./tableRow";
 import tableRowSelector from "./tableRowSelector";
-import { capitalizeString } from "../../plugins/textFormat";
 
 export default class Table extends ComponentBase {
 	constructor () {
@@ -14,18 +14,14 @@ export default class Table extends ComponentBase {
 	generateHeader() {
 		const tableHeadSelector = document.createElement("th");
 		tableHeadSelector.appendChild(tableRowSelector("main"));
-
 		const tableHeadEmptyCell = document.createElement("th");
-		
-		const tableHeaderCells = Object.keys(store.state.table.columns).map(columnName => {
-			const tableHeaderCellContent = document.createElement("h3");
-			tableHeaderCellContent.innerText = capitalizeString(columnName);
 
-			const tableHeaderCell = document.createElement("th");
-			tableHeaderCell.appendChild(tableHeaderCellContent);
-		
-			return tableHeaderCell;
-		});
+		const tableHeaderCells = Object.keys(store.state.table.columns)
+			.map(columnName => {
+				const columnType = store.state.table.columns[columnName];
+				return new TableHeaderCell(columnName, columnType).render();
+			}
+		);
 
 		const tableHeadRow = document.createElement("tr");
 		tableHeadRow.appendChild(tableHeadSelector);

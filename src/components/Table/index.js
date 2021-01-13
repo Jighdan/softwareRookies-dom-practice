@@ -48,7 +48,7 @@ export default class Table extends ComponentBase {
 	};
 
 	render() {
-		if (Object.keys(store.state.table.columns).length && store.state.table.rows.length) {
+		if (Object.keys(store.state.table.columns).length || store.state.table.rows.length) {
 			// Clear the table if it has a header or body
 			if (this.tableHead || this.tableBody) {
 				this.element.innerHTML = "";

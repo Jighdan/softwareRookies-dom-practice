@@ -16,7 +16,6 @@ export default class TableRowSelector extends ComponentBase {
 			case "main":
 				this.element.addEventListener("change", () => {
 					// TO-DO
-
 				});
 			default:
 				this.element.addEventListener("change", () => {
@@ -27,8 +26,6 @@ export default class TableRowSelector extends ComponentBase {
 					}
 				}
 			);
-			
-			
 		}
 	};
 

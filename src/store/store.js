@@ -10,7 +10,7 @@ export default class Store {
 		this.localStorageKey = "softwareRookies-dom-practice-state";
 	};
 
-	commit (mutationName, payload) {
+	commit (mutationName, payload, notifyEvents=true) {
 		if (typeof this.mutations[mutationName] !== "function") {
 			console.error("Mutations not found");
 			return false;
@@ -18,14 +18,18 @@ export default class Store {
 
 		// Commit the mutation
 		this.mutations[mutationName](this.state, payload);
-		// Notify the stateChange for the observers
-		this.events.notify("stateChange", this.state);
-		// Save the current state in the local storage
-		localStorage.setItem(this.localStorageKey, JSON.stringify(this.state));
+		
+		if (notifyEvents) {
+			// Notify the stateChange for the observers
+			this.events.notify("stateChange", this.state);
+		};
+
+		// Save the current table state in the local storage
+		localStorage.setItem(this.localStorageKey, JSON.stringify(this.state.table));
 	};
 
 	fetchSavedState() {
 		const localStorageState = localStorage.getItem(this.localStorageKey);
-		if (localStorageState) { this.state = JSON.parse(localStorageState) };
+		if (localStorageState) { this.state.table = JSON.parse(localStorageState) };
 	};
 };

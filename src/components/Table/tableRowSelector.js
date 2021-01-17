@@ -1,18 +1,43 @@
-const tableRowSelector = (rowId) => {
-	const element = document.createElement("input");
-	element.setAttribute("type", "checkbox");
-	element.setAttribute("data-row-id", rowId);
+import ComponentBase from "../ComponentBase";
+import store from "../../store/index";
 
-	// Listen for clicks
-	element.addEventListener("click", (event) => {
-		// Assumes that the element path will be -> ... tr > td > element
-		const elementGrandparent = event.path[2];
-		const { rowId } = elementGrandparent.dataset
+export default class TableRowSelector extends ComponentBase {
+	constructor(rowId) {
+		super({ store, element: document.createElement("input") });
+		this.rowId = rowId;
+		this.hasRenderedOnce = false;
 
-		console.log(`This row id => ${rowId}`)
-	});
+		this.element.setAttribute("type", "checkbox");
+		this.element.setAttribute("data-row-id", rowId);
+	};
 
-	return element;
+	addEvents() {
+		switch (this.rowId) {
+			case "main":
+				this.element.addEventListener("change", () => {
+					// TO-DO
+
+				});
+			default:
+				this.element.addEventListener("change", () => {
+					if (this.element.checked) {
+						store.commit("addRowToSelectedRows", { rowId: this.rowId }, false);
+					} else {
+						store.commit("removeRowFromSelectedRows", { rowId: this.rowId }, false);
+					}
+				}
+			);
+			
+			
+		}
+	};
+
+	render() {
+		if (!this.hasRenderedOnce) {
+			this.addEvents();
+		};
+
+		this.hasRenderedOnce = true;
+		return this.element;
+	};
 };
-
-export default tableRowSelector;

@@ -29,10 +29,7 @@ export default {
 
 	updateRowCell (state, { rowId, newCellState }) {
 		const { cellName, cellValue } = newCellState;
-		// Find a row with an id that matches the passed rowId parameter
-		// And update the cell
-		state.table.rows.find(row => row.id === rowId)
-			.cells[cellName] = cellValue;
+		state.table.rows.find(row => row.id === rowId).cells[cellName] = cellValue;
 	},
 
 	sortRows (state, { columnName, columnType }) {
@@ -50,5 +47,27 @@ export default {
 				return 0;
 			});
 		};
+	},
+
+	addRowToSelectedRows (state, { rowId }) {
+		state.selectedRows.push(rowId);
+	},
+
+	removeRowFromSelectedRows (state, { rowId }) {
+		const rowIndex = state.selectedRows.indexOf(rowId);
+		state.selectedRows.splice(rowIndex, 1);
+	},
+
+	deleteAllSelectedRows (state) {
+		// Iterate over all the rowIds in state.selectedRows
+		state.selectedRows.forEach(rowId => {
+			// Find the row inside table.rows that matches the rowId
+			let selectedRow = state.table.rows.find(row => row.id === rowId);
+			// Removes the row from the selectedRows state
+			state.selectedRows.shift();
+			// Get the index of that row
+			let index = state.table.rows.indexOf(selectedRow);
+			state.table.rows.splice(index, 1);
+		});
 	}
 };

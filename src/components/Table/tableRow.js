@@ -1,12 +1,12 @@
 import TableRowCell from "./tableRowCell";
-import tableRowSelector from "./tableRowSelector";
+import TableRowSelector from "./tableRowSelector";
 import tableRowOptions from "./tableRowOptions";
 
 const tableRow = (row, tableColumns) => {
 	const element = document.createElement("tr");
 
 	const elementSelector = document.createElement("td");
-	elementSelector.appendChild(tableRowSelector(row.id));
+	elementSelector.appendChild(new TableRowSelector(row.id).render());
 
 	const elementOptions = document.createElement("td");
 	elementOptions.appendChild(tableRowOptions());

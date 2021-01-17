@@ -2,7 +2,7 @@ import ComponentBase from "../ComponentBase";
 import store from "../../store/index";
 import TableHeaderCell from "./tableHeaderCell";
 import tableRow from "./tableRow";
-import tableRowSelector from "./tableRowSelector";
+import TableRowSelector from "./tableRowSelector";
 
 export default class Table extends ComponentBase {
 	constructor () {
@@ -13,7 +13,7 @@ export default class Table extends ComponentBase {
 
 	generateHeader() {
 		const tableHeadSelector = document.createElement("th");
-		tableHeadSelector.appendChild(tableRowSelector("main"));
+		tableHeadSelector.appendChild(new TableRowSelector("main").render());
 		const tableHeadEmptyCell = document.createElement("th");
 
 		const tableHeaderCells = Object.keys(store.state.table.columns)

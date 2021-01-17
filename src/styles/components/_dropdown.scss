@@ -1,0 +1,32 @@
+.dropdown {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.dropdown-content {
+	min-width: 10rem;
+	padding: 0.75rem 1rem;
+	display: none;
+	position: absolute;
+	z-index: 1;
+	left: -4rem;
+	text-align: left;
+	border: 1px solid lightgray;
+	background-color: white;
+}
+
+.dropdown-content-show {
+	display: block;
+}
+
+.dropdown-content-item {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+	cursor: pointer;
+
+	&:nth-child(even) {
+		border-top: 0.5px solid lightgray;
+		border-bottom: 0.5px solid lightgray;
+	}
+}

@@ -6,11 +6,11 @@
   "author": "Reinny <reynsth@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack --watch",
+    "dev": "webpack --watch",
     "build": "yarn webpack:build; yarn sass:build",
     "webpack:build": "webpack",
     "sass:build": "dart-sass ./src/styles/main.scss ./dist/style.css --no-source-map",
-    "sass:watch": "dart-sass ./src/styles/main.scss ./dist/style.css --watch --no-source-map"
+    "sass:dev": "dart-sass ./src/styles/main.scss ./dist/style.css --watch --no-source-map"
   },
   "devDependencies": {
     "webpack": "^5.11.0",

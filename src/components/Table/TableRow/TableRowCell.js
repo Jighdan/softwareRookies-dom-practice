@@ -25,6 +25,20 @@ export default class TableRowCell extends ComponentBase {
 
 	addEvents() {
 		this.element.addEventListener("dblclick", () => this.promptNewCellValue());
+
+		// Clicking on a cell that's a URL or email should direct to that
+		// property on Control + Click
+		if (["email", "url"].includes(this.cellType)) {
+			// We need to convert email to `mailto:email` in order
+			// for it to work
+			const cellValue = this.cellType === "email" ? `mailto:${this.cellValue}` : this.cellValue;
+
+			this.element.addEventListener("click", event => {
+				if (event.ctrlKey) {
+					window.open(cellValue, "_blank");
+				};
+			});
+		};
 	};
 
 	render() {

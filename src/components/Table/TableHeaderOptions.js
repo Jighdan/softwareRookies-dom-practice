@@ -4,7 +4,7 @@ const ICON_OPTIONS_PATH = "./icons/options.svg";
 // since we won't be touching the store from this component, neither
 // this component will mutate the store state, except from our `Delete` option
 
-export default class TableHeadOptions {
+export default class TableHeaderOptions {
 	constructor() {
 		this.element = document.createElement("div");
 

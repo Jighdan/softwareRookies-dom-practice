@@ -1,9 +1,9 @@
 import ComponentBase from "../ComponentBase";
 import store from "../../store/index";
-import TableOptions from "./tableOptions";
-import TableHeaderCell from "./tableHeaderCell";
-import tableRow from "./tableRow";
-import TableRowSelector from "./tableRowSelector";
+import TableHeaderOptions from "./TableHeaderOptions";
+import TableHeaderCell from "./TableHeaderCell";
+import TableRow from "./TableRow/index";
+import TableRowSelector from "./TableRow/TableRowSelector";
 
 export default class Table extends ComponentBase {
 	constructor () {
@@ -15,8 +15,8 @@ export default class Table extends ComponentBase {
 	generateHeader() {
 		const tableHeadSelector = document.createElement("th");
 		tableHeadSelector.appendChild(new TableRowSelector("main").render());
-		const tableOptions = document.createElement("th");
-		tableOptions.appendChild(new TableOptions().render());
+		const tableHeaderOptions = document.createElement("th");
+		tableHeaderOptions.appendChild(new TableHeaderOptions().render());
 
 		const tableHeaderCells = Object.keys(store.state.table.columns)
 			.map(columnName => {
@@ -28,7 +28,7 @@ export default class Table extends ComponentBase {
 		const tableHeadRow = document.createElement("tr");
 		tableHeadRow.appendChild(tableHeadSelector);
 		tableHeaderCells.forEach(headerCell => tableHeadRow.appendChild(headerCell));
-		tableHeadRow.appendChild(tableOptions);
+		tableHeadRow.appendChild(tableHeaderOptions);
 
 		const tableHeader = document.createElement("thead");
 		tableHeader.appendChild(tableHeadRow)
@@ -38,7 +38,7 @@ export default class Table extends ComponentBase {
 	};
 
 	generateBody() {
-		const tableBodyRows = store.state.table.rows.map(row => tableRow(row, store.state.table.columns));
+		const tableBodyRows = store.state.table.rows.map(rowData => new TableRow(rowData).render());
 		const tableBody = document.createElement("tbody");
 		tableBodyRows.forEach(row => tableBody.appendChild(row));
 		this.element.appendChild(tableBody);

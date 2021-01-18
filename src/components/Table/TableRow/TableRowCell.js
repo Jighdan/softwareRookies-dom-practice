@@ -1,5 +1,5 @@
-import ComponentBase from "../ComponentBase";
-import store from "../../store/index";
+import ComponentBase from "./../../ComponentBase";
+import store from "./../../../store/index";
 
 export default class TableRowCell extends ComponentBase {
 	constructor (rowId, cellName, cellType, cellValue) {

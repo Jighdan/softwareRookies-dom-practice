@@ -1,5 +1,5 @@
-import ComponentBase from "../ComponentBase";
-import store from "../../store/index";
+import ComponentBase from "./../../ComponentBase";
+import store from "./../../../store/index";
 
 export default class TableRowSelector extends ComponentBase {
 	constructor(rowId) {

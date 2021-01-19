@@ -1,6 +1,6 @@
-import ComponentBase from "../ComponentBase";
-import store from "../../store/index";
-import { capitalizeString } from "../../plugins/textFormat";
+import ComponentBase from "./../../ComponentBase";
+import store from "./../../../store/index";
+import { capitalizeString } from "../../../plugins/textFormat";
 
 export default class TableHeaderCell extends ComponentBase {
 	constructor(columnName, columnType) {

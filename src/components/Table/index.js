@@ -1,7 +1,7 @@
 import ComponentBase from "../ComponentBase";
 import store from "../../store/index";
-import TableHeaderOptions from "./TableHeaderOptions";
-import TableHeaderCell from "./TableHeaderCell";
+import TableHeaderOptions from "./TableHeader/TableHeaderOptions";
+import TableHeaderCell from "./TableHeader/TableHeaderCell";
 import TableRow from "./TableRow/index";
 import TableRowSelector from "./TableRow/TableRowSelector";
 

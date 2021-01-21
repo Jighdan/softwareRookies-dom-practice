@@ -12,20 +12,35 @@ export default class TableRowSelector extends ComponentBase {
 	};
 
 	addEvents() {
-		switch (this.rowId) {
-			case "main":
-				this.element.addEventListener("change", () => {
-					// TO-DO
-				});
-			default:
-				this.element.addEventListener("change", () => {
-					if (this.element.checked) {
-						store.commit("addRowToSelectedRows", { rowId: this.rowId }, false);
-					} else {
-						store.commit("removeRowFromSelectedRows", { rowId: this.rowId }, false);
-					}
+		if (this.rowId === "main") {
+			this.element.addEventListener("change", () => {
+				// Get all the available selectors
+				const availableSelectors = document.querySelectorAll("input[type=checkbox][data-row-id]");
+
+				if (this.element.checked) {
+					// Toggle all the available row selectors an checked
+					new Array(...availableSelectors).map(selector => selector.checked = true);
+
+					// Adds all the available selected rows to the selected rows state
+					store.state.table.rows.forEach(row => store.commit("addRowToSelectedRows", { rowId: row.id }, false));
+				} else {
+					// Toggle all the available row selectors as unchecked
+					new Array(...availableSelectors).map(selector => selector.checked = false);
+
+					// Removes all the available selected rows from the selected rows state
+					store.state.table.rows.forEach(row => store.commit("removeRowFromSelectedRows", { rowId: row.id }, false));
 				}
-			);
+			});
+		};
+
+		if (this.rowId !== "main") {
+			this.element.addEventListener("change", () => {
+				if (this.element.checked) {
+					store.commit("addRowToSelectedRows", { rowId: this.rowId }, false);
+				} else {
+					store.commit("removeRowFromSelectedRows", { rowId: this.rowId }, false);
+				}
+			});
 		}
 	};
 

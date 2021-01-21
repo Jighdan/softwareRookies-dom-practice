@@ -52,12 +52,16 @@ export default {
 	},
 
 	addRowToSelectedRows (state, { rowId }) {
-		state.selectedRows.push(rowId);
+		if (!state.selectedRows.includes(rowId)) {
+			state.selectedRows.push(rowId);
+		}
 	},
 
 	removeRowFromSelectedRows (state, { rowId }) {
-		const rowIndex = state.selectedRows.indexOf(rowId);
-		state.selectedRows.splice(rowIndex, 1);
+		if (state.selectedRows.includes(rowId)) {
+			const rowIndex = state.selectedRows.indexOf(rowId);
+			state.selectedRows.splice(rowIndex, 1);
+		}
 	},
 
 	deleteAllSelectedRows (state) {

@@ -7,9 +7,8 @@ import TableRowSelector from "./TableRow/TableRowSelector";
 
 export default class Table extends ComponentBase {
 	constructor () {
-		super({ store, element: document.getElementById("table") })
-		this.tableHeader = null;
-		this.tableBody = null;
+		super({ store, element: document.createElement("table") })
+		this.elementContainer = document.getElementById("tableContainer");
 	};
 
 	generateHeader() {
@@ -34,7 +33,6 @@ export default class Table extends ComponentBase {
 		tableHeader.appendChild(tableHeadRow)
 
 		this.element.appendChild(tableHeader);
-		this.tableHeader = tableHeader;
 	};
 
 	generateBody() {
@@ -42,19 +40,26 @@ export default class Table extends ComponentBase {
 		const tableBody = document.createElement("tbody");
 		tableBodyRows.forEach(row => tableBody.appendChild(row));
 		this.element.appendChild(tableBody);
-		this.tableBody = tableBody;
 	};
 
 	render() {
-		if (Object.keys(store.state.table.columns).length || store.state.table.rows.length) {
-			// Clear the table if it has a header or body
-			if (this.tableHead || this.tableBody) {
-				this.element.innerHTML = "";
-			}
+		const storedTableHasContent = Object.keys(store.state.table.columns).length || store.state.table.rows.length;
+
+		if (!storedTableHasContent) {
+			this.element = document.createElement("h1");
+			this.element.innerText = "Start by creating a New Row";
+		};
+
+		if (storedTableHasContent) {
+			this.element = document.createElement("table");
+
+			this.elementContainer.innerHTML = "";
 
 			this.generateHeader();
 			this.generateBody();
-			return this.element;
 		};
+
+		this.elementContainer.appendChild(this.element);
+		return this.element;
 	};
 };

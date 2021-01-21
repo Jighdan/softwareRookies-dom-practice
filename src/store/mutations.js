@@ -1,3 +1,5 @@
+import generateId from "../plugins/idGenerator";
+
 export default {
 	setTableRowsData (state, newRowsData) {
 		state.table.rows = newRowsData;
@@ -5,7 +7,7 @@ export default {
 
 	addRow (state) {
 		const rowTemplate = {
-			id: uuidv4(),
+			id: generateId(),
 			cells: {}
 		};
 

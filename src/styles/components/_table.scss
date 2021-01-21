@@ -20,7 +20,15 @@ tr {
 
 th, td {
 	padding: $table-cell-padding;
+}
+
+.header-cell {
+	padding: $table-cell-padding;
 	text-align: center;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .table-container {

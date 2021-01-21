@@ -14,6 +14,10 @@ export default class TableHeaderCell extends ComponentBase {
 		this.element.appendChild(this.elementContent);
 	};
 
+	addStyle() {
+		this.element.classList.add("header-cell");
+	};
+
 	addEvents() {
 		const cellData = { columnName: this.columnName, columnType: this.columnType }
 		this.element.addEventListener("click", () => store.commit("sortRows", cellData));
@@ -21,6 +25,7 @@ export default class TableHeaderCell extends ComponentBase {
 
 	render() {
 		if (!this.hasRenderedOnce) {
+			this.addStyle();
 			this.addEvents();
 		};
 

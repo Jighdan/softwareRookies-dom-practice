@@ -8,13 +8,15 @@ export default class TableRowSelector extends ComponentBase {
 		this.hasRenderedOnce = false;
 
 		this.element.setAttribute("type", "checkbox");
-		this.element.setAttribute("data-row-id", rowId);
+
+		rowId === "main"
+			? this.element.setAttribute("data-row-main", rowId)
+			: this.element.setAttribute("data-row-id", rowId);
 	};
 
-	addEvents() {
+	addEvents() {	
 		if (this.rowId === "main") {
 			this.element.addEventListener("change", () => {
-				// Get all the available selectors
 				const availableSelectors = document.querySelectorAll("input[type=checkbox][data-row-id]");
 
 				if (this.element.checked) {
@@ -39,9 +41,31 @@ export default class TableRowSelector extends ComponentBase {
 					store.commit("addRowToSelectedRows", { rowId: this.rowId }, false);
 				} else {
 					store.commit("removeRowFromSelectedRows", { rowId: this.rowId }, false);
+				};
+
+				// When a change happens on a selector, update the indeterminate state
+				// for the main selector
+				const mainSelector = document.querySelector("input[type=checkbox][data-row-main]");
+				const availableSelectors = document.querySelectorAll("input[type=checkbox][data-row-id]");
+
+				const thereAreSomeSelectorsChecked = new Array(...availableSelectors).some(selector => selector.checked);
+				const allTheSelectorsAreChecked = new Array(...availableSelectors).every(selector => selector.checked);
+			
+				if (thereAreSomeSelectorsChecked) {
+					mainSelector.indeterminate = true;
+				};
+
+				if (allTheSelectorsAreChecked) {
+					mainSelector.indeterminate = false;
+					mainSelector.checked = true;
 				}
-			});
-		}
+
+				if (!thereAreSomeSelectorsChecked && !allTheSelectorsAreChecked) {
+					mainSelector.indeterminate = false;
+					mainSelector.checked = false;
+				}
+			});	
+		};
 	};
 
 	render() {

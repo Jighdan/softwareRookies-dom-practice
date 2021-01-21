@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 $color-blue: #32a2b9;
 $color-green: #50a944;
@@ -6,3 +6,6 @@ $color-silver: #c0c0c0;
 $color-gray: #696969;
 
 $font-family: "Open Sans", sans-serif;
+
+$table-border: 1px solid $color-silver;
+$table-cell-padding: 0.65rem 1rem;

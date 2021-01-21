@@ -23,6 +23,18 @@ export default class TableRowCell extends ComponentBase {
 		};
 	};
 
+	addStyle() {
+		this.element.classList.add("data-cell");
+
+		if (this.cellType === "number") {
+			this.element.classList.add("data-cell-number");
+		} else if (["email", "url"].includes(this.cellType)) {
+			this.element.classList.add("data-cell-link");
+		} else {
+			this.element.classList.add("data-cell-text");
+		};
+	};
+
 	addEvents() {
 		this.element.addEventListener("dblclick", () => this.promptNewCellValue());
 
@@ -43,6 +55,7 @@ export default class TableRowCell extends ComponentBase {
 
 	render() {
 		if (!this.hasRenderedOnce) {
+			this.addStyle();
 			this.addEvents();
 		};
 		

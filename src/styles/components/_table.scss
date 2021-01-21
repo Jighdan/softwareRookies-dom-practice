@@ -1,37 +1,46 @@
 table {
-	border: 1px solid $color-silver;
+	max-width: 100%;
+	border: $table-border;
 	border-collapse: collapse;
 }
 
 thead {
-	border-bottom: 1px solid $color-silver;
-}
-
-.table-container {
-	overflow-x: auto;
-}
-
-table {
-	max-width: 100%;
+	border-bottom: $table-border;
 }
 
 tr {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
+	border: $table-border;
+
+	&:nth-child(even) {
+		background-color: rgba(0, 0, 0, 0.03);
+	}
 }
 
 th, td {
-	padding: 6.5px 13px;
-}
-
-tr:nth-child(even) {
-	background-color: rgba(0, 0, 0, 0.03);
-}
-
-th {
+	padding: $table-cell-padding;
 	text-align: center;
 }
 
 .table-container {
+	overflow-x: auto;
 	place-self: center stretch;
+}
+
+.data-cell {
+	padding: $table-cell-padding;
+
+	&-text {
+		text-align: left;
+	}
+
+	&-link {
+		color: $color-blue;
+		text-decoration: underline;
+	}
+
+	&-number {
+		text-align: right;
+	}
 }

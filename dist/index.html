@@ -6,49 +6,47 @@
 	<title>Software Rookies - DOM Practice</title>
 	<link rel="stylesheet" href="./style.css">
 </head>
-<body>
-	<article class="base">
-		<aside class="modal" role="dialog" id="modal">
-			<section class="modal-body">
-				<img class="modal-close" id="modalClose" src="./icons/close.svg" />
+<body class="base">
+	<aside class="modal" role="dialog" id="modal">
+		<section class="modal-body">
+			<img class="modal-close" id="modalClose" src="./icons/close.svg" />
 
-				<form class="form" id="newColumnForm">
-					<h1>New Column</h1>
-					<section class="form-section">
-						<label class="form-label" for="columnName">Column Name</label>
-						<input class="form-input" type="text" name="columnName" required autocomplete="off" />
-					</section>
-					<section class="form-section">
-						<label class="form-label" for="columnType">Column Type</label>
-						<select class="form-input" name="columnType">
-							<option value="text" selected>Text</option>
-							<option value="number">Number</option>
-							<option value="url">URL</option>
-							<option value="email">E-Mail</option>
-						</select>
-					</section>
+			<form class="form" id="newColumnForm">
+				<h1>New Column</h1>
+				<section class="form-section">
+					<label class="form-label" for="columnName">Column Name</label>
+					<input class="form-input" type="text" name="columnName" required autocomplete="off" />
+				</section>
+				<section class="form-section">
+					<label class="form-label" for="columnType">Column Type</label>
+					<select class="form-input" name="columnType">
+						<option value="text" selected>Text</option>
+						<option value="number">Number</option>
+						<option value="url">URL</option>
+						<option value="email">E-Mail</option>
+					</select>
+				</section>
 
-					<button class="button" type="submit">Create New Column</button>
-				</form>
-			</section>
-		</aside>
+				<button class="button" type="submit">Create New Column</button>
+			</form>
+		</section>
+	</aside>
 
-		<main class="main">
-			<section class="header">
-				<button class="button button-green" type="button" id="buttonNewRow">New Row</button>
-				<!-- #buttonNewColumn will be disabled by default -->
-				<button class="button button-blue button-disabled" disabled type="button" id="buttonNewColumn">New Column</button>
-			</section>
+	<main class="main">
+		<section class="header">
+			<button class="button button-green" type="button" id="buttonNewRow">New Row</button>
+			<!-- #buttonNewColumn will be disabled by default -->
+			<button class="button button-blue button-disabled" disabled type="button" id="buttonNewColumn">New Column</button>
+		</section>
 
-			<section class="table-container">
-				<table id="table"></table>
-			</section>
-		</main>
+		<section class="table-container">
+			<table id="table"></table>
+		</section>
+	</main>
 
-		<footer class="footer">
-			<h3>Pagination ...</h3>
-		</footer>
-	</article>
+	<footer class="footer">
+		<h3>Pagination ...</h3>
+	</footer>
 
 	<script type="module" src="./script.js"></script>
 </body>

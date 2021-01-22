@@ -37,14 +37,25 @@ export default {
 	sortRows (state, { columnName, columnType }) {
 		// NOTE -> Empty cells will always be < than any letter or number (except zero)
 		if (columnType === "number") {
-			const sortedTableData = state.table.rows.sort((a, b) => a.cells[columnName] - b.cells[columnName]);
-			return sortedTableData;
-		};
+			const highestNumber = Number.MAX_SAFE_INTEGER;
 
-		if (["email", "url", "text"].includes(columnType)) {
 			const sortedTableData = state.table.rows.sort((a, b) => {
-				let firstValue = a.cells[columnName].toUpperCase();
-				let secondValue = b.cells[columnName].toUpperCase();
+				let firstValue = a.cells[columnName] === "" ? highestNumber : a.cells[columnName];
+				let secondValue = b.cells[columnName] === "" ? highestNumber : b.cells[columnName];
+
+				return firstValue - secondValue;
+			});
+			return sortedTableData;
+
+		} else {
+			const highestString = "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ";
+
+			const sortedTableData = state.table.rows.sort((a, b) => {
+				let firstValueUpper = a.cells[columnName].toUpperCase();
+				let secondValueUpper = b.cells[columnName].toUpperCase();
+
+				let firstValue = firstValueUpper === "" ? highestString : firstValueUpper;
+				let secondValue = secondValueUpper === "" ? highestString : secondValueUpper;
 
 				if (firstValue < secondValue) { return -1 };
 				if (firstValue > secondValue ) { return 1 };

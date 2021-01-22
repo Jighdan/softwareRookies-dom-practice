@@ -10,7 +10,7 @@ export default class ButtonNewColumn extends ComponentBase {
 
 	setDisabledButton() {
 		// Check if there are no rows in the table
-		if (!store.state.table.rows.length) {
+		if (!store.getter("tableData").rows.length) {
 			this.element.disabled = true;
 			this.element.classList.add("button-disabled");
 		} else {

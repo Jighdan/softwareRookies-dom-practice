@@ -17,9 +17,9 @@ export default class Table extends ComponentBase {
 		const tableHeaderOptions = document.createElement("th");
 		tableHeaderOptions.appendChild(new TableHeaderOptions().render());
 
-		const tableHeaderCells = Object.keys(store.state.table.columns)
+		const tableHeaderCells = Object.keys(store.getter("tableData").columns)
 			.map(columnName => {
-				const columnType = store.state.table.columns[columnName];
+				const columnType = store.getter("tableData").columns[columnName];
 				return new TableHeaderCell(columnName, columnType).render();
 			}
 		);
@@ -36,14 +36,14 @@ export default class Table extends ComponentBase {
 	};
 
 	generateBody() {
-		const tableBodyRows = store.state.table.rows.map(rowData => new TableRow(rowData).render());
+		const tableBodyRows = store.getter("tableData").rows.map(rowData => new TableRow(rowData).render());
 		const tableBody = document.createElement("tbody");
 		tableBodyRows.forEach(row => tableBody.appendChild(row));
 		this.element.appendChild(tableBody);
 	};
 
 	render() {
-		const storedTableHasContent = Object.keys(store.state.table.columns).length || store.state.table.rows.length;
+		const storedTableHasContent = Object.keys(store.getter("tableData").columns).length || store.getter("tableData").rows.length;
 
 		if (!storedTableHasContent) {
 			this.element = document.createElement("h1");

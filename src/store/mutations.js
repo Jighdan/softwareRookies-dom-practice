@@ -37,17 +37,22 @@ export default {
 	sortRows (state, { columnName, columnType }) {
 		// NOTE -> Empty cells will always be < than any letter or number (except zero)
 		if (columnType === "number") {
-			state.table.rows.sort((a, b) => a.cells[columnName] - b.cells[columnName]);
-		} else {
-			state.table.rows.sort((a, b) => {
+			const sortedTableData = state.table.rows.sort((a, b) => a.cells[columnName] - b.cells[columnName]);
+			return sortedTableData;
+		};
+
+		if (["email", "url", "text"].includes(columnType)) {
+			const sortedTableData = state.table.rows.sort((a, b) => {
 				let firstValue = a.cells[columnName].toUpperCase();
 				let secondValue = b.cells[columnName].toUpperCase();
-	
+
 				if (firstValue < secondValue) { return -1 };
-				if (firstValue > secondValue) { return 1 };
-				// If they happen to be equal
+				if (firstValue > secondValue ) { return 1 };
+				// If firstValue and secondValue are equal
 				return 0;
 			});
+
+			return sortedTableData;
 		};
 	},
 

@@ -12,9 +12,9 @@ export default class TableRow extends ComponentBase {
 
 	generateCells() {
 		const rowCells = Object.keys(this.rowData.cells).map(cellName => {
-			const cellType = store.state.table.columns[cellName];
+			const cellType = store.getter("tableData").columns[cellName];
 			const cellValue = this.rowData.cells[cellName];
-			const cellNode = new TableRowCell(this.rowData.id, cellName, cellType, cellValue)
+			const cellNode = new TableRowCell(this.rowData.id, cellName, cellType, cellValue);
 			return cellNode.render();
 		});
 

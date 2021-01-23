@@ -1,2 +1,6 @@
 node_modules/
 LOG.md
+
+# Build files
+dist/script.js
+dist/style.css

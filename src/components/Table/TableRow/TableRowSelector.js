@@ -24,13 +24,13 @@ export default class TableRowSelector extends ComponentBase {
 					new Array(...availableSelectors).map(selector => selector.checked = true);
 
 					// Adds all the available selected rows to the selected rows state
-					store.getter("tableData").rows.forEach(row => store.commit("addRowToSelectedRows", { rowId: row.id }, false));
+					store.getter("table").rows.forEach(row => store.commit("addRowToSelectedRows", { rowId: row.id }, false));
 				} else {
 					// Toggle all the available row selectors as unchecked
 					new Array(...availableSelectors).map(selector => selector.checked = false);
 
 					// Removes all the available selected rows from the selected rows state
-					store.getter("tableData").rows.forEach(row => store.commit("removeRowFromSelectedRows", { rowId: row.id }, false));
+					store.getter("table").rows.forEach(row => store.commit("removeRowFromSelectedRows", { rowId: row.id }, false));
 				}
 			});
 		};

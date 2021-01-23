@@ -1,5 +1,5 @@
 export default {
-	tableData(state) {
+	table(state) {
 		return state.table;
 	},
 

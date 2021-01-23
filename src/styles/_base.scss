@@ -8,16 +8,13 @@ html {
 	padding: calc(1vh + 1.5rem) calc(1vw + 1.5rem);
 	font-family: $font-family;
 	font-size: 16px;
+	color: $color-font;
+	background-color: $color-background;
+	user-select: none;
 }
 
 html, body {
 	height: 100%;
-}
-
-.base {
-	display: grid;
-	grid-template-rows: 1fr auto;
-	gap: 1rem;
 }
 
 .main {

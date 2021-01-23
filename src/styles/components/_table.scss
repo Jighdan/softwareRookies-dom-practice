@@ -1,5 +1,5 @@
 table {
-	max-width: 100%;
+	min-width: 100%;
 	border: $table-border;
 	border-collapse: collapse;
 }
@@ -24,6 +24,7 @@ th, td {
 
 .header-cell {
 	padding: $table-cell-padding;
+	font-size: 0.9em;
 	text-align: center;
 
 	&:hover {
@@ -32,8 +33,8 @@ th, td {
 }
 
 .table-container {
-	overflow-x: auto;
 	place-self: center stretch;
+	overflow-x: auto;
 }
 
 .data-cell {
@@ -44,8 +45,10 @@ th, td {
 	}
 
 	&-link {
-		color: $color-blue;
+		min-width: calc(max-content - 80% );
+		color: $color-font-accent;
 		text-decoration: underline;
+		word-break: break-word;
 	}
 
 	&-number {

@@ -4,15 +4,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Software Rookies - DOM Practice</title>
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	
 	<link rel="stylesheet" href="./style.css">
 </head>
-<body class="base">
+<body>
 	<aside class="modal" role="dialog" id="modal">
 		<section class="modal-body">
 			<img class="modal-close" id="modalClose" src="./icons/close.svg" />
 
 			<form class="form" id="newColumnForm">
-				<h1>New Column</h1>
+				<h1>New Column Information</h1>
 				<section class="form-section">
 					<label class="form-label" for="columnName">Column Name</label>
 					<input class="form-input" type="text" name="columnName" required autocomplete="off" />
@@ -34,17 +39,13 @@
 
 	<section class="main">
 		<section class="header">
-			<button class="button button-green" type="button" id="buttonNewRow">New Row</button>
+			<button class="button" type="button" id="buttonNewRow">New Row</button>
 			<!-- #buttonNewColumn will be disabled by default -->
-			<button class="button button-blue button-disabled" disabled type="button" id="buttonNewColumn">New Column</button>
+			<button class="button button-disabled" disabled type="button" id="buttonNewColumn">New Column</button>
 		</section>
 
 		<main class="table-container" id="tableContainer"></main>
 	</section>
-
-	<footer class="footer">
-		<h3>Pagination ...</h3>
-	</footer>
 
 	<script type="module" src="./script.js"></script>
 </body>

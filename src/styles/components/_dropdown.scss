@@ -2,14 +2,22 @@
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
+
+	&:hover, &:active {
+		cursor: context-menu;
+
+		& .dropdown-content {
+			visibility: visible;
+		}
+	}
 }
 
 .dropdown-content {
 	min-width: 10rem;
 	padding: 0.75rem 1rem;
-	display: none;
+	visibility: hidden;
 	position: fixed;
-	transform: translateX(-4rem);
+	transform: translateX(-7.175rem);
 	z-index: 1;
 	text-align: left;
 	border: 1px solid lightgray;
@@ -17,16 +25,20 @@
 }
 
 .dropdown-content-show {
-	display: block;
+	visibility: visible;
 }
 
 .dropdown-content-item {
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
-	cursor: pointer;
+
+	&:hover {
+		cursor: pointer;
+		color: $color-highlight-accent;
+	}
 
 	&:nth-child(even) {
-		border-top: 0.5px solid lightgray;
-		border-bottom: 0.5px solid lightgray;
+		border-top: 0.5px solid $color-background-accent;
+		border-bottom: 0.5px solid $color-background-accent;
 	}
 }

@@ -49,17 +49,9 @@ export default class TableHeaderOptions {
 		this.element.append(this.elementIcon, this.elementContent);
 	};
 
-	addEvents() {
-		this.element.addEventListener("click", () => {
-			this.elementContent.classList.toggle("dropdown-content-show");
-		});
-	};
-
 	render() {
 		// Even that this component won't be updating on state mutation,
 		// web will keep using `render()` for naming consistency
-		this.addEvents();
-
 		return this.element;
 	};
 };

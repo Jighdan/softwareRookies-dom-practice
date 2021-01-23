@@ -43,7 +43,7 @@ export default class Table extends ComponentBase {
 	};
 
 	render() {
-		const storedTableHasContent = Object.keys(store.getter("table").columns).length || store.getter("tableData").rows.length;
+		const storedTableHasContent = Object.keys(store.getter("table").columns).length || store.getter("table").rows.length;
 
 		if (!storedTableHasContent) {
 			this.element = document.createElement("h1");

@@ -1,8 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+// Colors
+$color-background: #fff;
+$color-background-accent: lightgray;
 
-$color-blue: #32a2b9;
-$color-green: #50a944;
-$color-silver: #c0c0c0;
-$color-gray: #696969;
+$color-highlight: #41a79a;
+$color-highlight-accent: #3FA294;
 
-$font-family: "Open Sans", sans-serif;
+$color-highlight-secondary: #620504;
+
+$color-font: #000;
+$color-font-accent: #f2575e;
+
+// Fonts
+$font-family: "Open Sans", "Circular", sans-serif;
+
+// Borders
+$table-border: 1px solid $color-background-accent;
+$table-cell-padding: 0.65rem 1rem;
+
+// Animations
+$transition: all 0.25s ease-in-out;

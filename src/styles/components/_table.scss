@@ -1,20 +1,57 @@
-table, th, td {
-	border: 1px solid $color-gray;
+table {
+	min-width: 100%;
+	border: $table-border;
 	border-collapse: collapse;
 }
 
-table {
-	min-width: 100%;
+thead {
+	border-bottom: $table-border;
+}
+
+tr {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border: $table-border;
+
+	&:nth-child(even) {
+		background-color: rgba(0, 0, 0, 0.03);
+	}
 }
 
 th, td {
-	padding: 6.5px 13px;
+	padding: $table-cell-padding;
 }
 
-th {
-	text-align: left;
+.header-cell {
+	padding: $table-cell-padding;
+	font-size: 0.9em;
+	text-align: center;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 .table-container {
 	place-self: center stretch;
+	overflow-x: auto;
+}
+
+.data-cell {
+	padding: $table-cell-padding;
+
+	&-text {
+		text-align: left;
+	}
+
+	&-link {
+		min-width: calc(max-content - 80% );
+		color: $color-font-accent;
+		text-decoration: underline;
+		word-break: break-word;
+	}
+
+	&-number {
+		text-align: right;
+	}
 }

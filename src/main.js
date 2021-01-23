@@ -1,8 +1,11 @@
+import store from "./store/index";
 import Table from "./components/Table/index";
 import Modal from "./components/Modal";
 import Form from "./components/Form";
 import ButtonNewColumn from "./components/Button/ButtonNewColumn";
 import ButtonNewRow from "./components/Button/ButtonNewRow";
+
+store.fetchSavedState();
 
 const instanceOfTable = new Table();
 const instanceOfModal = new Modal();

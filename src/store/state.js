@@ -1,8 +1,6 @@
 const state = {
 	table: {
-		columns: {
-			// headerName: headerType
-		},
+		columns: {/* headerName: headerType */},
 		rows: [
 			/*
 				{
@@ -13,7 +11,8 @@ const state = {
 				}
 			*/
 		]
-	}
+	},
+	selectedRows: [/* row.id */]
 };
 
 export default state;

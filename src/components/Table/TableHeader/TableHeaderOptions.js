@@ -1,5 +1,6 @@
 import store from "../../../store/index";
 import TableHeaderOptionsItem from "./TableHeaderOptionsItem";
+import { convertToJSON, convertToCSV } from "../../../plugins/tableDataConvertors";
 
 const ICON_OPTIONS_PATH = "./icons/options.svg";
 
@@ -15,11 +16,29 @@ export default class TableHeaderOptions {
 		this.availableOptions = [
 			{
 				optionName: "Export as CSV",
-				optionCallback: function() { console.log("Export as CSV") }
+				optionCallback: function() {
+					if (!store.getter("selectedRows")?.length) {
+						alert("No Rows Selected");
+						return false;	
+					};
+
+					const convertedData = convertToCSV(store.getter("selectedRowsData"));
+					navigator.clipboard.writeText(convertedData);
+					alert("Rows data Copied to Clipboard!");
+				}
 			},
 			{
 				optionName: "Export as JSON",
-				optionCallback: function() { console.log("Export as JSON") }
+				optionCallback: function() {
+					if (!store.getter("selectedRows")?.length) {
+						alert("No Rows Selected");
+						return false;	
+					};
+
+					const convertedData = convertToJSON(store.getter("selectedRowsData"));
+					navigator.clipboard.writeText(convertedData);
+					alert("Rows data Copied to Clipboard!");
+				}
 			},
 			{
 				optionName: "Delete",
